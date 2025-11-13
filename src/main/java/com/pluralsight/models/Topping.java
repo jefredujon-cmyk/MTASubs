@@ -5,7 +5,7 @@ public class Topping {
     private final String type;
     private final int size;
 
-    public Topping(String name, String type, int size) {
+    public Topping(String name, String type, Size size) {
         this.name = name;
         this.type = type.toLowerCase();
         this.size = size;

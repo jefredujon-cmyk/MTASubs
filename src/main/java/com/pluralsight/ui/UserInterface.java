@@ -3,8 +3,6 @@ package com.pluralsight.ui;
 import com.pluralsight.models.*;
 import com.pluralsight.util.ReceiptWriter;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class UserInterface {
@@ -55,13 +53,33 @@ public class UserInterface {
         }
     }
 
+    // -----------------------------
+    // ⭐ NEW ENUM-BASED SIZE METHOD
+    // -----------------------------
+    private Size chooseSize() {
+        System.out.println("Choose a sandwich size:");
+
+        int index = 1;
+        for (Size s : Size.values()) {
+            System.out.println(index + ") " + s.toString() + " - $" + s.getPrice());
+            index++;
+        }
+
+        System.out.print("Enter option: ");
+        int choice = Integer.parseInt(scanner.nextLine());
+
+        return Size.values()[choice - 1];
+    }
+
     private Sandwich createSandwich() {
         System.out.print("Bread type (white/wheat/rye/wrap): ");
         String bread = scanner.nextLine();
 
-        System.out.print("Size (4/8/12): ");
-        int size = Integer.parseInt(scanner.nextLine());
+        // ⭐ NEW ENUM SIZE SELECTION
+        Size size = chooseSize();
 
+        // Your Sandwich must have a constructor like:
+        // Sandwich(String bread, Size size);
         Sandwich sandwich = new Sandwich(bread, size);
 
         System.out.print("Toasted? (y/n): ");

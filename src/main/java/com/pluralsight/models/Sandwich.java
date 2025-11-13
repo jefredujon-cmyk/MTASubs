@@ -5,12 +5,13 @@ import java.util.List;
 
 public class Sandwich {
     private final String bread;
-    private final int size;
+    private final Size size;
     private boolean toasted;
     private final List<Topping> toppings = new ArrayList<>();
-    private final String name = " MTA Sub"; // 💥 new name
+    private final String name = "MTA Sub"; // Name for your sandwich
 
-    public Sandwich(String bread, int size) {
+    // ✅ Constructor now accepts Size enum
+    public Sandwich(String bread, Size size) {
         this.bread = bread;
         this.size = size;
     }
@@ -23,13 +24,9 @@ public class Sandwich {
         toppings.add(t);
     }
 
+    // ✅ Price now comes directly from Size enum
     public double getPrice() {
-        double base = switch (size) {
-            case 4 -> 5.50;
-            case 8 -> 7.00;
-            case 12 -> 8.50;
-            default -> 0;
-        };
+        double base = size.getPrice();  // Uses enum price
         double toppingCost = toppings.stream().mapToDouble(Topping::getPrice).sum();
         return base + toppingCost;
     }
@@ -40,7 +37,7 @@ public class Sandwich {
 
     @Override
     public String toString() {
-        return name + " (" + size + "\" " + bread + (toasted ? ", Toasted" : "") + ") - $" +
+        return name + " (" + size.toString() + " " + bread + (toasted ? ", Toasted" : "") + ") - $" +
                 String.format("%.2f", getPrice());
     }
 }
