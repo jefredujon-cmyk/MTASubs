@@ -1,9 +1,10 @@
 package com.pluralsight.models;
 
-package com.pluralsight.models;
+
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Order {
     private final List<Sandwich> sandwiches = new ArrayList<>();
@@ -31,5 +32,10 @@ public class Order {
         sb.append("Total: $").append(String.format("%.2f", getTotal()));
         return sb.toString();
     }
+
+    public void start(Scanner scanner) {
+    }
 }
+
+
 

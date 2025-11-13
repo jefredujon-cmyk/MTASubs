@@ -8,7 +8,7 @@ public class Sandwich {
     private final int size;
     private boolean toasted;
     private final List<Topping> toppings = new ArrayList<>();
-    private final String name = "The 4 Knuckle Sandwich"; // 💥 new name
+    private final String name = " MTA Sub"; // 💥 new name
 
     public Sandwich(String bread, int size) {
         this.bread = bread;
