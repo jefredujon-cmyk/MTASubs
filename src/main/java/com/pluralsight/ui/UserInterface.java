@@ -54,21 +54,28 @@ public class UserInterface {
     }
 
     // -----------------------------
-    // ⭐ NEW ENUM-BASED SIZE METHOD
+    // ⭐ ENUM-NAME SIZE SELECTION
     // -----------------------------
     private Size chooseSize() {
-        System.out.println("Choose a sandwich size:");
+        System.out.println("Choose a sandwich size (type ROLL, SIDEKICK, HERO):");
 
-        int index = 1;
         for (Size s : Size.values()) {
-            System.out.println(index + ") " + s.toString() + " - $" + s.getPrice());
-            index++;
+            System.out.println("- " + s.toString() + " ($" + s.getPrice() + ")");
         }
 
-        System.out.print("Enter option: ");
-        int choice = Integer.parseInt(scanner.nextLine());
+        Size selectedSize = null;
+        while (selectedSize == null) {
+            System.out.print("Enter size: ");
+            String input = scanner.nextLine().trim().toUpperCase();
 
-        return Size.values()[choice - 1];
+            try {
+                selectedSize = Size.valueOf(input); // converts "HERO" to Size.HERO
+            } catch (IllegalArgumentException e) {
+                System.out.println("Invalid size. Please type ROLL, SIDEKICK, or HERO.");
+            }
+        }
+
+        return selectedSize;
     }
 
     private Sandwich createSandwich() {
@@ -78,8 +85,6 @@ public class UserInterface {
         // ⭐ NEW ENUM SIZE SELECTION
         Size size = chooseSize();
 
-        // Your Sandwich must have a constructor like:
-        // Sandwich(String bread, Size size);
         Sandwich sandwich = new Sandwich(bread, size);
 
         System.out.print("Toasted? (y/n): ");

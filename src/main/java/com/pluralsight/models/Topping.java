@@ -2,8 +2,8 @@ package com.pluralsight.models;
 
 public class Topping {
     private final String name;
-    private final String type;
-    private final int size;
+    private final String type; // "meat", "cheese", "regular", "sauce"
+    private final Size size;   // ✅ Use Size enum
 
     public Topping(String name, String type, Size size) {
         this.name = name;
@@ -12,25 +12,37 @@ public class Topping {
     }
 
     public double getPrice() {
-        return switch (type) {
-            case "meat" -> switch (size) {
-                case 4 -> 1.00;
-                case 8 -> 2.00;
-                case 12 -> 3.00;
-                default -> 0;
-            };
-            case "cheese" -> switch (size) {
-                case 4 -> 0.75;
-                case 8 -> 1.50;
-                case 12 -> 2.25;
-                default -> 0;
-            };
-            default -> 0; // regular or sauce = free
-        };
+        switch (type) {
+            case "meat":
+                return switch (size) {
+                    case ROLL -> 1.00;
+                    case SIDEKICK -> 2.00;
+                    case HERO -> 3.00;
+                };
+            case "cheese":
+                return switch (size) {
+                    case ROLL -> 0.75;
+                    case SIDEKICK -> 1.50;
+                    case HERO -> 2.25;
+                };
+            case "regular", "sauce":
+                return 0.0; // included in base price
+            default:
+                return 0.0;
+        }
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getType() {
+        return type;
     }
 
     @Override
     public String toString() {
-        return name + " (" + type + ")";
+        double price = getPrice();
+        return name + (price > 0 ? " - $" + String.format("%.2f", price) : "");
     }
 }
