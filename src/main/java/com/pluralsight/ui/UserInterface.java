@@ -54,7 +54,7 @@ public class UserInterface {
     }
 
     // -----------------------------
-    // ⭐ ENUM-NAME SIZE SELECTION
+    // ENUM-NAME SIZE SELECTION
     // -----------------------------
     private Size chooseSize() {
         System.out.println("Choose a sandwich size (type ROLL, SIDEKICK, HERO):");

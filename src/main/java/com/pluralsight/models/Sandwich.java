@@ -10,7 +10,7 @@ public class Sandwich {
     private final List<Topping> toppings = new ArrayList<>();
     private final String name = "MTA Sub"; // Name for your sandwich
 
-    // ✅ Constructor now accepts Size enum
+    //Constructor now accepts enum
     public Sandwich(String bread, Size size) {
         this.bread = bread;
         this.size = size;
@@ -24,7 +24,7 @@ public class Sandwich {
         toppings.add(t);
     }
 
-    // ✅ Price now comes directly from Size enum
+    // Price now comes directly from Size enum
     public double getPrice() {
         double base = size.getPrice();  // Uses enum price
         double toppingCost = toppings.stream().mapToDouble(Topping::getPrice).sum();
