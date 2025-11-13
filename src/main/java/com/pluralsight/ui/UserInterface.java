@@ -69,7 +69,7 @@ public class UserInterface {
             String input = scanner.nextLine().trim().toUpperCase();
 
             try {
-                selectedSize = Size.valueOf(input); // converts "HERO" to Size.HERO
+                selectedSize = Size.valueOf(input); //
             } catch (IllegalArgumentException e) {
                 System.out.println("Invalid size. Please type ROLL, SIDEKICK, or HERO.");
             }
