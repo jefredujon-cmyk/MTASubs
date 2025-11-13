@@ -12,7 +12,7 @@ public class UserInterface {
 
     public void start() {
         while (true) {
-            System.out.println("\n🏠 Welcome to MTA SUBS);
+            System.out.println("\n🏠 Welcome to MTA Subs ");
             System.out.println("1) New Order");
             System.out.println("0) Exit");
             System.out.print("Select an option: ");
