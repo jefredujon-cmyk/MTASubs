@@ -1,49 +1,29 @@
 package com.pluralsight.models;
 
-//Enumeration (Enum) used to represent group of named constants(ex day of week Mon-Sun will never change)
 public enum Size {
 
-    //Enum constants for our sizes, will set price based on size
-
-    //Small will set  price to 5
-   ROLL(5.0, "ROLL."),
-
-    //Medium will set price to 12
-    SIDEKICK(12.0,"SIDEKICK"),
-
-    //HERO will set  price to 15
+    ROLL(5.0, "ROLL"),
+    SIDEKICK(12.0, "SIDEKICK"),
     HERO(15.0, "HERO");
 
-    //We need to set a price
     private final double price;
-    private final String name;
+    private final String displayName;
 
-    //Create constructor
-    Size(double price, String name){
+    Size(double price, String displayName) {
         this.price = price;
-        this.name = name;
+        this.displayName = displayName;
     }
 
-    //Overload constructor
-    Size(double price){
-        this.price = price;
-        this.name = null;
-    }
-
-    //Gotta get them getters
-    public double getPrice(){
+    public double getPrice() {
         return price;
     }
 
-    public String getName(){
-        return name;
+    public String getDisplayName() {
+        return displayName;
     }
 
-    //To string to turn SIZE into Size format
     @Override
-    public String toString(){
-        String lowCase = name().toLowerCase();
-        return Character.toUpperCase(lowCase.charAt(0)) + lowCase.substring(1);
+    public String toString() {
+        return displayName;
     }
-
 }
