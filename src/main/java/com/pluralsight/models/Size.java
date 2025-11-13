@@ -3,7 +3,7 @@ package com.pluralsight.models;
 //Enumeration (Enum) used to represent group of named constants(ex day of week Mon-Sun will never change)
 public enum Size {
 
-    //Enum constants for our sizes, will set price based on size, hold name for our questionableBurgers
+    //Enum constants for our sizes, will set price based on size
 
     //Small will set  price to 5
    ROLL(5.0, "ROLL."),
@@ -14,7 +14,7 @@ public enum Size {
     //HERO will set  price to 15
     HERO(15.0, "HERO");
 
-    //We need to set a base price and name for each size, name will only be for pattys
+    //We need to set a price
     private final double price;
     private final String name;
 
@@ -24,7 +24,7 @@ public enum Size {
         this.name = name;
     }
 
-    //Overload constructor so the drinks and side arent named per size
+    //Overload constructor
     Size(double price){
         this.price = price;
         this.name = null;
